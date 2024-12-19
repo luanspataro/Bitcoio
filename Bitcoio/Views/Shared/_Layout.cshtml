@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Bitcóio</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+        <a asp-controller="Bitcoin" asp-action="Index" class="logo">
+            <i class='bx bx-bitcoin'></i><span>itcóio</span>
+        </a>
+
+        <ul class="navbar">
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Bitcoin" asp-action="Index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Bitcoin" asp-action="Info">Informações</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Bitcoin" asp-action="Contato">Sobre</a>
+            </li>
+
+        </ul>
+
+        <div class="main">
+            <a href="https://coinmarketcap.com/pt-br/currencies/bitcoin/" target="_blank" rel="noopener noreferrer" class="user"><i class='bx bx-candles'></i>Cotação</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script type="text/javascript" src="~/js/site.js"></script>
+    <script type="text/javascript" src="~/js/navbar.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
