@@ -35,7 +35,7 @@ namespace Bitcoio.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetBitcoinPriceAsync(BitcoioModel model)
+        public async Task<IActionResult> GetBitcoinPriceAsync([FromBody] BitcoioModel model)
         {
             if (ModelState.IsValid)
             {
