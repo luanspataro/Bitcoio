@@ -57,7 +57,7 @@ namespace Bitcoio.Service
         {
             var response = new List<Bitcoin>();
 
-            string relativePath = @"Data\BitcoinDatePriceBRL.xlsx";
+            string relativePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "BitcoinDatePriceBRL.xlsx");
             FileInfo existingFile = new FileInfo(relativePath);
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;

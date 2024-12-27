@@ -210,11 +210,15 @@ header {
 /* Hamburger Menu */
 @media (max-width: 1090px) {
     #menu-icon {
-        display: block;
+        display: flex;
         position: fixed;
         top: 20px;
         right: 20px;
         z-index: 1000;
+    }
+
+    .menu-container {
+        margin-left: 30px;
     }
 
     .navbar {
@@ -222,7 +226,7 @@ header {
         top: 0;
         right: -270px;
         width: 270px;
-        max-height: 80vh;
+        max-height: 80vh; 
         background: var(--main-color);
         display: flex;
         flex-direction: column;
