@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Globalization;
 
 namespace Bitcoio.Service
 {
@@ -72,7 +73,9 @@ namespace Bitcoio.Service
                 {
                     var bitcoin = new Bitcoin();
                     bitcoin.Price = Convert.ToDecimal(worksheet.Cells[row, 2].Value);
-                    bitcoin.PriceDate = Convert.ToDateTime(worksheet.Cells[row, 1].Value);
+                    bitcoin.PriceDate = DateTime.ParseExact(worksheet.Cells[row, 1].Text, "dd/MM/yyyy", CultureInfo.InvariantCulture 
+                );
+
 
                     response.Add(bitcoin);
                 }
