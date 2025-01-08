@@ -142,6 +142,7 @@ header {
 
 .navbar {
     display: flex;
+    margin-inline-start: 50px;
 }
 
     .navbar a {
@@ -226,7 +227,7 @@ header {
         top: 0;
         right: -270px;
         width: 270px;
-        max-height: 80vh; 
+        max-height: 80vh;
         background: var(--main-color);
         display: flex;
         flex-direction: column;
@@ -235,6 +236,7 @@ header {
         transition: right .50s ease;
         max-width: 100%;
         overflow-y: auto;
+        margin-inline-start: 50px;
     }
 
         .navbar a {
