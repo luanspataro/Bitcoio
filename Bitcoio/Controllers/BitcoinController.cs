@@ -45,7 +45,7 @@ namespace Bitcoio.Controllers
                     BitPrecoResponse response = await _bitcoinService.Integration();
 
 
-                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Price, response.Avg);
+                    var profitData = _bitcoinService.ProfitCalc(model.PurchaseValue, btcData.Price, response.Last);
 
                     decimal amount = profitData.Amount;
                     decimal percentage = profitData.Percentage;

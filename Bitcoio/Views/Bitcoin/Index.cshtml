@@ -42,8 +42,8 @@
 
                                     <label asp-for="PurchaseDate" class="control-label"></label>
                                     <input asp-for="PurchaseDate" class="form-control shadow-none"
-                                           max="2025-02-12"
-                                           min="2010-07-17"
+                                           max="2025-02-21"
+                                           min="2010-07-18"
                                            value="@Model.PurchaseDate == DateTime.MinValue ? DateTime.Now.ToString(" yyyy-MM-dd") : Model.PurchaseDate.ToString("yyyy-MM-dd")" />
                                     <span asp-validation-for="PurchaseDate" class="text-danger"></span>
                                 </div>

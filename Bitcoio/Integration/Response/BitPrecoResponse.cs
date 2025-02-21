@@ -8,7 +8,7 @@ namespace Bitcoio.Integration.Response
 {
     public class BitPrecoResponse
     {
-        public decimal Avg { get; set; }
+        public decimal Last { get; set; }
         public bool Error = false;
     }
 }
