@@ -9,7 +9,7 @@ Inspirado nessa curiosidade, a aplicação foi criada visando proporcionar uma f
 Combinando dados e cotações atualizadas em tempo real, o Bitcóio foi criado para ajudar você a simular os possíveis ganhos de forma prática, interativa e envolvente. Afinal, quem nunca quis saber como seria a vida se tivesse surfado na onda do Bitcoin no momento certo?
 
 ## Deploy
-https://lionfish-app-uoc62.ondigitalocean.app/
+https://bitcoio.luandev.tech
 
 ## Demonstração do Sistema
 ![image](https://github.com/user-attachments/assets/100ba13f-8f12-422a-bb7b-38ae962118ac)
