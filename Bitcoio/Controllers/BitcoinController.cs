@@ -41,7 +41,7 @@ namespace Bitcoio.Controllers
             {
                 try
                 {
-                    var btcData = _bitcoinService.BtcCalc(model.PurchaseDate);
+                    var btcData = await _bitcoinService.GetBitcoinDataAsync(model.PurchaseDate);
                     BitPrecoResponse response = await _bitcoinService.Integration();
 
 

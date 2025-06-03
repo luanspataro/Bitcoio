@@ -8,15 +8,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
+using System.Text.Json.Nodes;
 
 namespace Bitcoio.Service
 {
     public class BitcoinService
     {
+        private readonly HttpClient _httpClient;
+
+        public BitcoinService()
+        {
+            _httpClient = new HttpClient();
+        }
+
         public async Task<BitPrecoResponse> Integration()
         {
-            HttpClient httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"https://api.bitpreco.com/btc-brl/ticker");
+            var response = await _httpClient.GetAsync($"https://api.bitpreco.com/btc-brl/ticker");
             var jsonString = await response.Content.ReadAsStringAsync();
 
             var jsonObject = JsonConvert.DeserializeObject<BitPrecoResponse>(jsonString);
@@ -32,10 +39,39 @@ namespace Bitcoio.Service
             };
         }
 
+        public async Task<Bitcoin> GetBitcoinDataAsync(DateTime userDate)
+        {
+            DateTime planilhaLimite = new DateTime(2025, 2, 21);
+
+            if (userDate <= planilhaLimite)
+            {
+                return BtcCalc(userDate);
+            }
+            else
+            {
+                string url = $"https://www.mercadobitcoin.net/api/BTC/day-summary/{userDate.Year}/{userDate.Month}/{userDate.Day}";
+
+                var response = await _httpClient.GetAsync(url);
+                var jsonString = await response.Content.ReadAsStringAsync();
+
+                var jsonObject = JsonConvert.DeserializeObject<MercadoBitcoinResponse>(jsonString);
+
+                if (jsonObject != null && !jsonObject.Error)
+                {
+                    return new Bitcoin
+                    {
+                        Price = jsonObject.Closing
+                    };
+                }
+            }
+
+            throw new InvalidOperationException("Erro: Dados não recebidos da API.");
+        }
+
         public ProfitResult ProfitCalc(decimal purchasePrice, decimal purchaseRate, decimal actualPrice)
         {
             decimal amount = purchasePrice / purchaseRate;
-            decimal percentage = (actualPrice / purchaseRate - 1) * 100;
+            decimal percentage = (actualPrice - purchaseRate) / purchaseRate * 100;
             decimal profit = amount * actualPrice - purchasePrice;
             decimal total = amount * actualPrice;
 

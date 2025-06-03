@@ -18,7 +18,6 @@ builder.Services.AddScoped<BitcoinService>();
 
 var app = builder.Build();
 
-// Configuração do pipeline de middleware (antigo Configure)
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();

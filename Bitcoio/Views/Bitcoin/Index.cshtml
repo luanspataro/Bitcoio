@@ -37,12 +37,12 @@
                                 <div class="form-group w-75 mt-3">
                                     <div class="form-row hide-inputbtns">
                                         <label asp-for="PurchaseValue" for="c1"></label>
-                                        <input asp-for="PurchaseValue" type="number" placeholder="1000" min="1" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency form-control shadow-none" id="c1" value="@Model.PurchaseValue ?? 1000" />
+                                        <input asp-for="PurchaseValue" type="number" placeholder="1000" min="1" max="9999999999" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="currency form-control shadow-none" id="c1" value="@Model.PurchaseValue ?? 1000" />
                                     </div>
 
                                     <label asp-for="PurchaseDate" class="control-label"></label>
                                     <input asp-for="PurchaseDate" class="form-control shadow-none"
-                                           max="2025-02-21"
+                                           max="@DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd")"
                                            min="2010-07-18"
                                            value="@Model.PurchaseDate == DateTime.MinValue ? DateTime.Now.ToString(" yyyy-MM-dd") : Model.PurchaseDate.ToString("yyyy-MM-dd")" />
                                     <span asp-validation-for="PurchaseDate" class="text-danger"></span>
@@ -53,6 +53,7 @@
 
                         <!-- Btc Price Function -->
                         <div id="result"></div>
+
                     </div>
                 </div>
             </div>
